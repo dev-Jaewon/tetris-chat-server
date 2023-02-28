@@ -71,6 +71,8 @@ server.on("connection", (conn) => {
     });
 
     conn.on("close", () => {
+        if (!user.session) return;
+
         const nickName = user.nickName;
         const session = user.session.leave(user);
 
